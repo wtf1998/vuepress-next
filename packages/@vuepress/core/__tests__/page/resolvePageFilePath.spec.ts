@@ -37,7 +37,7 @@ describe('core > page > resolvePageFilePath', () => {
 
   it('should throw if filePath is relative', () => {
     const consoleError = console.error
-    console.error = jest.fn()
+    console.error = vi.fn()
 
     expect(() =>
       resolvePageFilePath({

@@ -14,7 +14,7 @@ beforeAll(async () => {
 describe('core > page > createPage', () => {
   it('should throw an error', async () => {
     const consoleError = console.error
-    console.error = jest.fn()
+    console.error = vi.fn()
 
     await expect(createPage(app, {})).rejects.toThrow()
     expect(console.error).toHaveBeenCalled()

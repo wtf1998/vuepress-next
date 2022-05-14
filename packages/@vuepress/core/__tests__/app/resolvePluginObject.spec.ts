@@ -19,7 +19,7 @@ describe('core > app > resolvePluginObject', () => {
   })
 
   it('should work with plugin function', () => {
-    const pluginFunction: PluginFunction = jest.fn((app) => ({
+    const pluginFunction: PluginFunction = vi.fn((app) => ({
       name: 'plugin-function',
     }))
 

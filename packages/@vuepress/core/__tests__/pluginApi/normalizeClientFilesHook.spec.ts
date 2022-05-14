@@ -19,7 +19,7 @@ const clientConfigFileNonExistent = path.resolve(
 describe('core > pluginApi > normalizeClientConfigFileHook', () => {
   describe('should keep function as is', () => {
     it('return value is string', async () => {
-      const rawHook: ClientConfigFileHook['exposed'] = jest.fn(
+      const rawHook: ClientConfigFileHook['exposed'] = vi.fn(
         () => clientConfigFile
       )
       const normalizedHook = normalizeClientConfigFileHook(rawHook)
@@ -30,7 +30,7 @@ describe('core > pluginApi > normalizeClientConfigFileHook', () => {
 
     it('should throw an error if file does not exist', async () => {
       const consoleError = console.error
-      console.error = jest.fn()
+      console.error = vi.fn()
 
       const rawHook: ClientConfigFileHook['exposed'] =
         clientConfigFileNonExistent
@@ -51,7 +51,7 @@ describe('core > pluginApi > normalizeClientConfigFileHook', () => {
 
     it('should throw an error if file does not exist', async () => {
       const consoleError = console.error
-      console.error = jest.fn()
+      console.error = vi.fn()
 
       const rawHook: ClientConfigFileHook['exposed'] =
         clientConfigFileNonExistent

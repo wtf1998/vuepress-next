@@ -106,7 +106,7 @@ describe('core > page > resolvePagePath', () => {
 
   it('should throw an error', async () => {
     const consoleError = console.error
-    console.error = jest.fn()
+    console.error = vi.fn()
 
     expect(() =>
       resolvePagePath({

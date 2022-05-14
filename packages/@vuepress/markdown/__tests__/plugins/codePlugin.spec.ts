@@ -348,7 +348,7 @@ ${codeFence}
 `
 
     it('should work if highlighted code is wrapped with `<pre>`', () => {
-      const highlight = jest.fn(
+      const highlight = vi.fn(
         (code, lang) =>
           `<pre><code>highlighted code: ${code}, lang: ${lang}</code></pre>`
       )
@@ -359,7 +359,7 @@ ${codeFence}
     })
 
     it('should work if highlighted code is not wrapped with `<pre>`', () => {
-      const highlight = jest.fn(
+      const highlight = vi.fn(
         (code, lang) => `highlighted code: ${code}, lang: ${lang}`
       )
       const md = MarkdownIt({ highlight }).use(codePlugin)

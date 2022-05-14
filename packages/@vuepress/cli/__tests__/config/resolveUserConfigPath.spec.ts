@@ -19,7 +19,7 @@ describe('cli > config > resolveUserConfigPath', () => {
 
   it('should throw an error if file does not exist', () => {
     const consoleError = console.error
-    console.error = jest.fn()
+    console.error = vi.fn()
 
     expect(() => {
       resolveUserConfigPath('4-0-4')

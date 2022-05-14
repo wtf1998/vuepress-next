@@ -37,14 +37,14 @@ describe('core > pluginApi > createHookQueue', () => {
 
       it('should throw error from the first item', async () => {
         const consoleError = console.error
-        console.error = jest.fn()
+        console.error = vi.fn()
 
         const err1 = new Error('err1')
         const err2 = new Error('err2')
-        const func1 = jest.fn(() => {
+        const func1 = vi.fn(() => {
           throw err1
         })
-        const func2 = jest.fn(() => {
+        const func2 = vi.fn(() => {
           throw err2
         })
         hook.add({
@@ -78,8 +78,8 @@ describe('core > pluginApi > createHookQueue', () => {
     hookNames.forEach((hookName) =>
       it(`${hookName}`, async () => {
         const hook = createHookQueue(hookName)
-        const func1 = jest.fn()
-        const func2 = jest.fn()
+        const func1 = vi.fn()
+        const func2 = vi.fn()
         hook.add({
           pluginName: 'test1',
           hook: func1,
@@ -103,10 +103,10 @@ describe('core > pluginApi > createHookQueue', () => {
       const hookName = 'extendsMarkdownOptions'
 
       const hook = createHookQueue(hookName)
-      const func1 = jest.fn((markdownOptions) => {
+      const func1 = vi.fn((markdownOptions) => {
         markdownOptions.emoji = false
       })
-      const func2 = jest.fn((markdownOptions) => {
+      const func2 = vi.fn((markdownOptions) => {
         markdownOptions.extractHeaders = false
       })
       hook.add({
@@ -131,8 +131,8 @@ describe('core > pluginApi > createHookQueue', () => {
       const hookName = 'extendsMarkdown'
 
       const hook = createHookQueue(hookName)
-      const func1 = jest.fn()
-      const func2 = jest.fn()
+      const func1 = vi.fn()
+      const func2 = vi.fn()
       hook.add({
         pluginName: 'test1',
         hook: func1,
@@ -153,10 +153,10 @@ describe('core > pluginApi > createHookQueue', () => {
       const hookName = 'extendsPageOptions'
 
       const hook = createHookQueue(hookName)
-      const func1 = jest.fn((pageOptions) => {
+      const func1 = vi.fn((pageOptions) => {
         pageOptions.content = pageOptions.content ?? 'foo'
       })
-      const func2 = jest.fn((pageOptions) => {
+      const func2 = vi.fn((pageOptions) => {
         pageOptions.content = pageOptions.content ?? 'nar'
       })
       hook.add({
@@ -186,13 +186,13 @@ describe('core > pluginApi > createHookQueue', () => {
         { extraFrontmatter: string },
         { extraField: string }
       >
-      const func1 = jest.fn((page) => {
+      const func1 = vi.fn((page) => {
         page.data.extraData = 'foo'
       })
-      const func2 = jest.fn((page) => {
+      const func2 = vi.fn((page) => {
         page.frontmatter.extraFrontmatter = 'bar'
       })
-      const func3 = jest.fn((page) => {
+      const func3 = vi.fn((page) => {
         page.extraField = 'baz'
       })
       hook.add({
@@ -222,10 +222,10 @@ describe('core > pluginApi > createHookQueue', () => {
       const hookName = 'extendsBundlerOptions'
 
       const hook = createHookQueue(hookName)
-      const func1 = jest.fn((bundlerOptions) => {
+      const func1 = vi.fn((bundlerOptions) => {
         bundlerOptions.foo = 'foo'
       })
-      const func2 = jest.fn((bundlerOptions) => {
+      const func2 = vi.fn((bundlerOptions) => {
         bundlerOptions.bar = 'bar'
       })
       hook.add({
@@ -261,8 +261,8 @@ describe('core > pluginApi > createHookQueue', () => {
     hookNames.forEach((hookName) =>
       it(`${hookName}`, async () => {
         const hook = createHookQueue(hookName)
-        const func1 = jest.fn(() => Promise.resolve(file1))
-        const func2 = jest.fn(() => Promise.resolve(file2))
+        const func1 = vi.fn(() => Promise.resolve(file1))
+        const func2 = vi.fn(() => Promise.resolve(file2))
         hook.add({
           pluginName: 'test1',
           hook: func1,
@@ -288,8 +288,8 @@ describe('core > pluginApi > createHookQueue', () => {
     hookNames.forEach((hookName) =>
       it(`${hookName}`, async () => {
         const hook = createHookQueue(hookName)
-        const func1 = jest.fn(() => Promise.resolve({ foo: 'foo' }))
-        const func2 = jest.fn(() => Promise.resolve({ bar: 'bar' }))
+        const func1 = vi.fn(() => Promise.resolve({ foo: 'foo' }))
+        const func2 = vi.fn(() => Promise.resolve({ bar: 'bar' }))
         hook.add({
           pluginName: 'test1',
           hook: func1,

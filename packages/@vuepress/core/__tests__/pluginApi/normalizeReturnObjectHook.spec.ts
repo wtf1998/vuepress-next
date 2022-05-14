@@ -10,7 +10,7 @@ const app = createBaseApp({
 
 describe('core > pluginApi > normalizeReturnObjectHook', () => {
   it('should keep function as is', async () => {
-    const rawHook: ReturnObjectHook['exposed'] = jest.fn((app) => ({
+    const rawHook: ReturnObjectHook['exposed'] = vi.fn((app) => ({
       foo: 'bar',
     }))
     const normalizedHook = normalizeReturnObjectHook(rawHook)

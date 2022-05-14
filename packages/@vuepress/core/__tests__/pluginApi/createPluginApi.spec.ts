@@ -34,7 +34,7 @@ describe('core > pluginApi > createPluginApi', () => {
   it('hooks should only take effect after `registerHooks` is called', async () => {
     const pluginApi = createPluginApi()
 
-    const hookFn = jest.fn()
+    const hookFn = vi.fn()
 
     pluginApi.plugins.push({
       name: 'test',

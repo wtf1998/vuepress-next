@@ -44,7 +44,7 @@ describe('core > app > resolveThemeLayouts', () => {
 
   it('should throw an error if the layout directory does not exist', () => {
     const consoleError = console.error
-    console.error = jest.fn()
+    console.error = vi.fn()
 
     expect(() => {
       resolveThemeLayouts('4-0-4')

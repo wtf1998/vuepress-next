@@ -12,7 +12,7 @@ describe('utils > logger', () => {
   methods.forEach(([method, innerMethod]) => {
     it(method, () => {
       const stored = console[innerMethod]
-      console[innerMethod] = jest.fn()
+      console[innerMethod] = vi.fn()
 
       logger[method]('foo')
       expect(console[innerMethod]).toHaveBeenCalledWith(
@@ -26,7 +26,7 @@ describe('utils > logger', () => {
 
   it('creteError', () => {
     const stored = console.error
-    console.error = jest.fn()
+    console.error = vi.fn()
 
     expect(logger.createError()).toBeInstanceOf(Error)
     expect(console.error).toHaveBeenCalled()
