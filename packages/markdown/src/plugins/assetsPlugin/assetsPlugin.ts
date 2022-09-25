@@ -41,8 +41,8 @@ export const assetsPlugin: PluginWithOptions<AssetsPluginOptions> = (
       tokens[idx].content = tokens[idx].content
         // handle src
         .replace(
-          /(<img\b.*?src=")([^"]*)(")/gs,
-          (_, prefix, src, suffix) =>
+          /(<img\b.*?src=(["']))(.*?)(\2)/gs,
+          (_, prefix, _quote, src, suffix) =>
             `${prefix}${resolveLink(
               src.trim(),
               relativePathPrefix,
@@ -51,8 +51,8 @@ export const assetsPlugin: PluginWithOptions<AssetsPluginOptions> = (
         )
         // handle srcset
         .replace(
-          /(<img\b.*?srcset=")([^"]*)(")/gs,
-          (_, prefix: string, srcset: string, suffix: string) =>
+          /(<img\b.*?srcset=(["']))(.*?)(\2)/gs,
+          (_, prefix: string, _quote, srcset: string, suffix: string) =>
             `${prefix}${srcset
               .split(',')
               .map((item) =>
