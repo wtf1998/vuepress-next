@@ -46,7 +46,8 @@ export const assetsPlugin: PluginWithOptions<AssetsPluginOptions> = (
             `${prefix}${resolveLink(
               src.trim(),
               relativePathPrefix,
-              env
+              env,
+              true
             )}${suffix}`
         )
         // handle srcset
@@ -64,7 +65,8 @@ export const assetsPlugin: PluginWithOptions<AssetsPluginOptions> = (
                       `${resolveLink(
                         url.trim(),
                         relativePathPrefix,
-                        env
+                        env,
+                        true
                       )}${descriptor.replace(/[ \n]+/g, ' ').trimEnd()}`
                   )
               )
