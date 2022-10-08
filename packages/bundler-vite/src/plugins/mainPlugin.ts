@@ -10,7 +10,7 @@ import type { AliasOptions, Connect, Plugin, UserConfig } from 'vite'
 const INVALID_CHAR_REGEX = /[\x00-\x1F\x7F<>*#"{}|^[\]`;?:&=+$,]/g
 const DRIVE_LETTER_REGEX = /^[a-z]:/i
 
-const sanitizeFileName = (name: string) => {
+const sanitizeFileName = (name: string): string => {
   const driveLetter = DRIVE_LETTER_REGEX.exec(name)?.[0] || ''
 
   return (
